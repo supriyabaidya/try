@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Assignment 3</title>
+        <link href="styles/styles.css" type="text/css" rel="stylesheet" />
+        <style>
+            #pictures img {
+                width: 200px;
+                height: 200px
+            }
+        </style>
+        
+        <script src="jquery-1.10.2.js" ></script>
+		
+		<script >
+			$(function(){
+				$("#menuInclude").load("menu.html");
+			});
+		</script>
+	</head>
+	<body>
+	
+		<h1>Assignment 1</h1>
+        
+        <div id="menuInclude" ></div>
+        
+        <h4><a style="text-decoration: none " onclick="callP1()" > call p1.php </a> to insert the dictionary file into database table 'word' .<br/>
+        Click <input type="button" id="start" value="start game" onclick="callP2()" > , to call p2.php to get a word from the database table 'word' .<br/></h4>
+		
+		<h1 id="word" ></h1>
+				
+        <input type="text" id="guess" maxlength="1" >
+        <input type="button" value="guess" onclick="game()" ><br/>
+        
+        <h5 id="lives" ></h5>
+        <h4 id="hint" ></h4>
+        
+        <script type="text/javascript">
+        	
+            var word="";
+            var p1CallingCheck=false,startGame=false;
+            var dash="";
+            var lives=10;
+            
+        	function callP1()
+        	{
+        		var xmlHttpRequest=new XMLHttpRequest();
+        		
+                xmlHttpRequest.open("GET","p1.php",true);
+                xmlHttpRequest.send();
+                
+                p1CallingCheck=true;
+        	}
+        	
+        	function callP2()
+        	{
+                
+                if(!p1CallingCheck)
+                {
+                    alert("click 'call p1.php' first");
+                    return;
+                }
+                
+                startGame=true;
+                
+                document.getElementById("lives").innerHTML=" lives : "+lives;
+                
+                var xmlHttpRequest=new XMLHttpRequest();
+                
+                xmlHttpRequest.onreadystatechange=function(){
+                    if(this.readyState==4 && this.status==200)
+                    {
+                        word=this.responseText;
+                        var len=word.length;
+                        
+                        for(var i=0;i<len;i++)
+                            dash=dash+"-";
+                        
+                        document.getElementById("word").innerHTML=dash;
+                        document.getElementById("start").disabled=true;     // disabling 'start game' button after game is started
+                        this.abort();
+                    }
+                };
+                
+                xmlHttpRequest.open("GET","p2.php",true);
+                xmlHttpRequest.send();
+            }
+        	
+        	
+        	function game()
+        	{
+                if(!startGame)
+                {
+                    alert("click 'start game' first");
+                    return;
+                } 
+                if(!p1CallingCheck)
+                {
+                    alert("click 'call p1.php' first");
+                    return;
+                }
+                var char=document.getElementById("guess").value;
+                document.getElementById("guess").value="";
+                
+                if(char=="")
+                {
+                    alert("please enter a guess ");
+                    return;
+                }
+                
+                var indices = [];
+                var count=0;
+                var index=-1;
+                
+                for(var i=0; i<word.length;i++) {
+                    if (word[i] === char)
+                    {
+                        count++;
+                        indices.push(i);
+                    }
+                }
+                
+                
+                if(count<1)
+                {
+                    document.getElementById("hint").innerHTML=" wrong guess ";
+                    
+                    lives--;
+                    
+                    if(lives<1)
+                    {
+                        document.getElementById("lives").innerHTML=" lives : "+lives;
+                        document.getElementById("hint").innerHTML=" Game Over , better luck next time ";
+                        setTimeout('continueDialog()',500);
+                    }
+                    
+                    document.getElementById("lives").innerHTML=" lives : "+lives;
+                    
+                    return;
+                }
+                
+                index=indices[0];
+                if(count>1)
+                    index=indices[Math.floor(Math.random()*(indices.length-0)+0)];
+                
+                document.getElementById("hint").innerHTML=" right guess ";
+                
+                dash=dash.substring(0,index)+char+dash.substring(index+1);
+                
+                document.getElementById("word").innerHTML=dash;
+                
+                if(word==dash)
+                {
+                    document.getElementById("hint").innerHTML=" Congrats !!! you won "; 
+                    setTimeout('continueDialog()',500);
+                }
+        	}
+            
+            function continueDialog()
+            {
+                document.getElementById("word").innerHTML="";
+                document.getElementById("hint").innerHTML="";
+                document.getElementById("lives").innerHTML="";
+                word="";
+                dash="";
+                lives=10;
+                
+                if(confirm("do you want to continue this game ?"))
+                {
+                    callP2();                    
+                }
+                else
+                {
+                    startGame=false;
+                    document.getElementById("start").disabled=false;
+                }
+            }
+        </script>
+	</body>
+</html>

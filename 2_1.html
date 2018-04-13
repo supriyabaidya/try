@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Assignments</title>
+		<link href="styles/styles.css" type="text/css" rel="stylesheet" />
+		
+		<script src="jquery-1.10.2.js" ></script>
+		
+		<script >
+			$(function(){
+				$("#menuInclude").load("menu.html");
+			});
+		</script>
+		
+	</head>
+	<body>
+		<h1>Assignment 4</h1>
+		
+		<div id="menuInclude" ></div>
+		
+		<h3>part 1 : the form</h3>
+		
+		<form action="2_2.php" method="post" >
+			sample_text : <input name="sample_text" type="text" /><br/>
+			Name : <input name="name" type="text" /><br/>
+			E-mail : <input name="email" type="text" /><br/>
+			Phone : <input name="phone" type="number" /><br/>
+			<input type="submit" value="submit" />
+		</form>
+	
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>exam</title>
+    </head>
+    <body>
+        <p>This is 1exam.html</p>
+
+        <div id="time"></div>
+
+        <input type="text" id="s"/>
+        <input type="button" id="test" value="start me" onclick='interval = setInterval(function () {
+                startTime(document.getElementById("test").value);
+            }, 500)' />
+        <input type="button" value="stop me" onclick='stopTime("stopped")' />
+
+
+        <script type="text/javascript">
+            var i = 0, interval;
+    //        for(i=0;i<word.length;i++)
+    //            document.write(word.charAt(i)+"</br>");
+            function printWord(word)
+            {
+                var i = 0;
+                for (i = 0; i < word.length; i++)
+                    document.write(word.charAt(i) + "</br>");
+            }
+
+            function startTime(w)
+            {
+                var time = new Date();
+                var h = time.getHours(), m = time.getMinutes(), s = time.getSeconds();
+                document.getElementById("time").innerHTML = w + " => " + h + " : " + m + " : " + s;
+            }
+
+            function stopTime(w)
+            {
+                clearInterval(interval);
+                document.getElementById("time").innerHTML = w;
+            }
+
+
+
+
+        </script>
+    </body>
+</html>

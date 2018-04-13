@@ -1,0 +1,247 @@
+            body {
+                font-size: 150%;
+                background-image: url(../images/background.png);
+                background-attachment: fixed;
+                background-size: cover
+            }
+            
+            
+            table {
+         	border:5px solid green;
+          	padding: 1px;
+         	border-spacing: 1px
+        	}
+         	td,th {
+         	text-align : left ;
+         	border:1px solid black;
+         	padding: 5px;
+         	}
+            
+
+            #menu {
+                position: relative;
+                margin: 0;
+                padding: 0;
+                height: 2em;
+/*                background-color: deepskyblue*/
+            }
+            
+            #menu a {
+                text-decoration: none
+            }
+            
+            #menu ul {
+                position: absolute;
+                text-align: center;
+                margin: 0px;
+                padding: 0px;
+            }
+            
+            #menu ul > li {
+                
+                border-left: 1px solid black;
+                
+                float: left;
+                display: block;
+                overflow: visible;
+                background-color: springgreen
+            }
+            
+            #menu ul > li > a {
+                margin: 5px;
+                padding: 5px;
+                font-family: sans-serif;
+                font-size: 24px;
+                color: darkblue;
+/*
+                float: left;
+                display: block;
+                overflow: visible;
+*/
+/*                background-color: lawngreen*/
+            }
+            
+            
+            #menu ul > li > a:visited {color: dodgerblue}
+            #menu ul > li > a:hover {color: firebrick}
+            #menu ul > li > a:active {color: yellow}
+            
+            
+            
+            #menu ul ul {
+/*                margin-top: 5px;*/
+/*                margin-left: auto;*/
+                border-top: 1px solid red;
+                border-right: 1px solid red;
+                display: none
+            }
+            
+            
+            #menu ul ul li {                
+                border-bottom: 1px solid red;
+                border-left-color: red;
+                
+                float:none;
+                display: block;
+                background-color: mediumspringgreen
+    
+            }
+            
+            
+            #menu ul ul li a {
+                margin: 5px;
+                padding: 5px;
+                font-family: sans-serif;
+                font-size: 20px;
+                color: darkorange
+            }
+            
+            
+            #menu ul ul li a:visited {color: dodgerblue}
+            #menu ul ul li a:hover {color: firebrick}
+            #menu ul ul li a:active {color: yellow}
+            
+            
+            #menu ul ul ul {
+                position: absolute;
+                margin-top: -28px;
+/*                margin-top: 15px;*/
+                margin-left: 100%;
+/*                width: 100%;*/
+                float: left;
+                border-top: 1px solid red;
+                border-right: 1px solid red
+            }
+            
+            #menu li:hover > ul {
+                display: block
+            }
+
+
+
+
+            h1 { color: blueviolet;position: relative;top: 30px;left: 50px}
+            h2 { color: crimson}
+            h3 { color: fuchsia}
+            h4 { color: forestgreen}
+            h5 { color: brown}
+            h6 { color: dodgerblue}
+            
+            p { color: red}
+            p:first-letter {
+                font-size: 300%;
+            }
+            
+            
+            .me {
+                position: relative;
+                background-color: black;
+                width: 680px;                
+                height: 880px
+            }
+            
+            .me img {
+                width: 600px;
+                height: 800px;
+                border: 3px solid aqua;
+                margin: 20px;
+                padding: 20px
+            }
+            
+            .me a {
+                position: absolute;
+                border: 3px double red;
+                padding: 1em;
+                height: 800px;
+                display: none
+            }
+            
+            .me:hover a {
+                display: block
+            }
+            
+            .note1 {
+                color: aqua;
+                font-size: 30px;
+                text-decoration: underline;
+                position: absolute;
+                border: 2px solid yellow;
+/*
+                padding-top: 200px;
+                padding-left: 150px;
+*/
+                
+                top: 43px;
+                left: 43px;
+/*                text-align: left;*/
+                display: none
+            }
+            
+            .me:hover .note1{
+                display: block
+            }
+            
+            .me2 img {
+                width: 275px;                
+                height: 400px
+            }
+            
+            #previous {
+                z-index: 1;
+                border: none;
+                top: 20px;
+                left: 20px
+            }
+            
+            #next {
+                top: 20px;
+                right: 20px
+            }
+            
+            .note1 img {                
+                width: 200px;
+                height: 300px;
+                border: none;
+                margin: 0;
+                padding: 0;
+                vertical-align: bottom
+            }
+            
+            
+            ol {
+                border: 3px dotted red;
+                background-color: black;
+                color: wheat;
+                margin: 20px;
+                padding: 20px;
+                padding-left: 60px
+            }
+            
+            ul {color: blue}
+
+            dl {
+                border: 3px dotted blue;
+                background-color: darkturquoise;
+                color: deeppink;
+                margin: 20px;
+                padding: 20px;
+                padding-left: 30px
+            }
+            
+            a {text-decoration: underline;color:  darkred}
+            a:visited {color: dodgerblue}            
+            a:hover {color: lawngreen}
+            a:active {color: yellow}
+            
+            .bottom {
+                border: 2px solid blue;
+                margin: 10px;
+                padding: 5px;
+                background-color: darkcyan;
+                position: fixed;
+                bottom: 10px;
+                left: 10px
+            }
+            
+            
+            p:last-of-type {padding-bottom: 3em}    /*leaving little blank for fixed copyright section */

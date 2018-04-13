@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TRY</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>TODO write content</div>
+        <div id="max" ></div>
+        <div id="round" ></div>
+        <div id="foo1" ></div>
+        <div id="foo2" ></div>
+        <script type="text/javascript">
+            
+            var a=b=9;
+            
+            console.log(a+'is a defined ? '+(a!=='undefined'));
+            console.log(b+'is b defined ? '+(b!=='undefined'));
+            document.getElementById('max').innerHTML='max of 2 , Math.max(2,6) : '+Math.max(2,6);
+            document.getElementById('round').innerHTML='round of 3.42 , Math.round(3.42) : '+Math.round(3.42);
+            function foo1(){
+                return {
+                    'test':'value'
+                };
+            }
+            
+            function foo2(){
+                return 
+                {
+                    'test';'value'
+                };
+            }
+            document.getElementById('foo1').innerHTML=foo1().test;
+            document.getElementById('foo2').innerHTML=foo2();
+        </script>
+        
+    </body>
+</html>

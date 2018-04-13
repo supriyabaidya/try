@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>ajax</title>
+		<link type="text/css" href="styles/styles.css" rel="stylesheet">
+		
+		<script src="jquery-1.10.2.js" ></script>
+		
+		<script >
+			$(function(){
+				$("#menuInclude").load("menu.html");
+			});
+		</script>
+	</head>
+	<body>
+		<h1>AJAX testing</h1>
+		
+		<div id="menuInclude" ></div>
+		
+		
+		<form onkeypress="return event.keyCode != 13">
+		
+			<label>Step 1 : Select an option</label><br/><br/>
+			<input type="radio" name="regex" id="beg" value="begin with" /> begin with<br/>
+			<input type="radio" name="regex" id="end" value="end with" /> end with<br/>
+			<input type="radio" name="regex" id="con" value="contains" /> contains<br/><br/><br/><br/>
+			<label>Step 2 : Enter the keyword</label><br/>
+			<input type="text" name="in" id="in" onkeyup="trial(this.value)" /><br/>
+			
+		</form>
+		
+		<br/><label>Result :</label>
+		<h4 id="output"></h4>
+		
+		<script type="text/javascript">
+			function trial(text)
+			{
+				var regex="";
+				if(document.getElementById("beg").checked)
+					regex="beg";
+				else if(document.getElementById("end").checked)
+					regex="end";
+				else if(document.getElementById("con").checked)
+					regex="con";
+				
+				if (text.length == 0) { 
+			        document.getElementById("output").innerHTML = "";
+			        return;
+			    } else {
+			        var xmlhttp = new XMLHttpRequest();
+			        xmlhttp.onreadystatechange = function() {
+			            if (this.readyState == 4 && this.status == 200) {
+			            	var t=this.responseText.split('/');
+			                document.getElementById("output").innerHTML = t[3]+"+" ;
+			            }
+			            else
+			            	document.getElementById("output").innerHTML="error : readyState = "+this.readyState+" , status = "+this.status;
+			        };
+			        xmlhttp.open("GET", "regex.php?regex="+regex+"&in="+text, true);
+			        xmlhttp.send();
+			    }
+		        
+				
+			}
+			
+		</script>
+		
+		
+	</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Practice HTML</title>
+        <link type="text/css" href="styles/styles.css" rel="stylesheet">
+        <script src="jquery-1.10.2.js" ></script>
+
+        <script >
+            $(function () {
+                $("#menuInclude").load("menu.html");
+            });
+        </script>
+    </head>
+    <body>
+
+        <h1>HTML Practice</h1>
+
+        <div id="menuInclude" ></div>
+
+        <h2>Mid Sem question (3) answer (HTML and JavaScript)</h2>
+
+        <h3>equation : f = p + r + n </h3>
+
+        F :
+        <input type="text" name="f" id="f" onmouseover="equation('f')" /><br/>
+        p :
+        <input type="text" name="p" id="p" onmouseover="equation('p')" /><br/>
+        r :
+        <input type="text" name="r" id="r" onmouseover="equation('r')" /><br/>
+        n :
+        <input type="text" name="n" id="n" onmouseover="equation('n')" /><br/>
+
+        <input type="button" name="clear" id="clear" value="clear" onclick="equation('clear')" />
+
+
+        <script type="text/javascript">
+
+            function equation(textbox)
+            {
+
+                var f = document.getElementById('f');
+                var p = document.getElementById('p');
+                var r = document.getElementById('r');
+                var n = document.getElementById('n');
+
+                if (textbox === 'clear')
+                {
+                    f.value = "";
+                    p.value = "";
+                    r.value = "";
+                    n.value = "";
+                }
+
+                if (textbox === 'f')
+                {
+                    if (p.value !== "" && r.value !== "" && n.value !== "")
+                    {
+                        f.value = parseInt(p.value) + parseInt(r.value) + parseInt(n.value);
+                    }
+                }
+                if (textbox === 'p')
+                {
+                    if (f.value !== "" && r.value !== "" && n.value !== "")
+                    {
+                        p.value = parseInt(f.value) - parseInt(r.value) - parseInt(n.value);
+                    }
+                }
+                if (textbox === 'r')
+                {
+                    if (p.value !== "" && f.value !== "" && n.value !== "")
+                    {
+                        r.value = parseInt(f.value) - parseInt(p.value) - parseInt(n.value);
+                    }
+                }
+                if (textbox === 'n')
+                {
+                    if (p.value !== "" && r.value !== "" && f.value !== "")
+                    {
+                        n.value = parseInt(f.value) - parseInt(p.value) - parseInt(r.value);
+                    }
+                }
+            }
+        </script>
+
+    </body>
+</html>

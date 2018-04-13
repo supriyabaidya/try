@@ -1,0 +1,4 @@
+ 1st  ...   writing to a file 
+ 2nd  ...   writing to a file 
+ 3st  ...   appending to a file 
+ 4nd  ...   appending to a file 
